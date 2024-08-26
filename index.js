@@ -1,8 +1,20 @@
-const root = document.querySelector("#root");
+const element = {
+  type: "h1",
+  props: {
+    title: "foo",
+    children: "Hello",
+  },
+};
 
-function render() {
-  return root.innerHTML = `<div>${new Date().toLocaleString()}</div>`
-}
+const container = document.querySelector("#root");
 
-console.log(root)
-render()
+const node = document.createElement(element.type);
+node["title"] = element.props.title;
+
+const text = document.createTextNode("");
+text["nodeValue"] = element.props.children;
+
+node.appendChild(text);
+container.appendChild(node);
+
+console.log(container);
